@@ -1,0 +1,9 @@
+.navbar-nav{
+    width: 1500px;    
+}
+.nav-item{
+    width: 175px;
+    float: right;
+    position: relative;
+    left: 800px;
+}

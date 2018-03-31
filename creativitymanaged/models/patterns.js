@@ -6,7 +6,8 @@ const patternSchema = new Schema({
     category: {type:String, required: true},
     patternNumber: {type: Number, required: true},
     brand: {type: String, required: true},
-    sizes: String    
+    sizes: String ,
+    status: { type: String, default: "in-stock"}   
 });
 
 const Pattern = mongoose.model("Pattern", patternSchema);
