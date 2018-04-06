@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Nav.css";
-import "./NavbarTop"
+
 
 const Nav = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -12,12 +13,8 @@ const Nav = props => (
 
         <div className="collapse navbar-collapse right" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-                <li
-                    onClick={() => props.handlePageChange("AdminHome")}
-                    className={props.currentPage === "AdminHome" ? "active" : ""}>
-                    <a className="nav-link">Administration Homes
-                        <span className="sr-only">(current)</span>
-                    </a>
+                <li className={window.location.pathname === "/" ? "active" : ""}>
+                    <Link to="/">Home</Link>
                 </li>
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -25,11 +22,15 @@ const Nav = props => (
                         Designs
                     </a>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item">Completed Projects</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item">Current Projects</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item">Future Projects</a>
+                        <ul>
+                            <li className={window.location.pathname === "/current-projects" ? "active" : ""}>
+                                <Link to="/current-projects">Current Projects</Link>
+                            </li>
+                            <div className="dropdown-divider"></div>
+                            <li className={window.location.pathname === "/completed&future" ? "active" : ""}>
+                                <Link to="/completedfuture">Completed and Future Projects</Link>
+                            </li>
+                        </ul>
                     </div>
                 </li>
                 <li className="nav-item dropdown">
@@ -37,14 +38,16 @@ const Nav = props => (
                         aria-expanded="false">
                         Patterns
                     </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown dLabel">
-                        <li 
-                        onClick={() => props.handlePageChange("PatternInStock")}
-                        className={props.currentPage === "PatternsInStock" ? "active" : ""}>
-                            <a>In-Stock Patterns</a>
-                        </li>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item">Damaged & Wishlist Patterns</a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul>
+                            <li className={window.location.pathname === "/patterns-in-stock" ? "active" : ""}>
+                                <Link to="/patterns-in-stock">Patterns In Stock</Link>
+                            </li>
+                            <div className="dropdown-divider"></div>
+                            <li className={window.location.pathname === "/damaged&wishlist-patterns" ? "active" : ""}>
+                                <Link to="/damagedwishlist-patterns">Damaged & Wishlist Patterns</Link>
+                            </li>
+                        </ul>
                     </div>
                 </li>
                 <li className="nav-item dropdown">
@@ -53,15 +56,20 @@ const Nav = props => (
                         Fabrics
                     </a>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item">In-Stock Fabrics</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item">Fabrics 1/2 yard and under</a>
+                        <ul>
+                            <li className={window.location.pathname === "/fabrics-in-stock" ? "active" : ""}>
+                                <Link to="/patterns-in-stock">Fabrics In Stock</Link>
+                            </li>
+                            <div className="dropdown-divider"></div>
+                            <li className={window.location.pathname === "/fabricshalfyard&under" ? "active" : ""}>
+                                <Link to="/fabricshalfyardunder">Fabrics 1/2 yard and under</Link>
+                            </li>
+                        </ul>                        
                     </div>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link">Main Portfolio Page</a>
                 </li>
-
             </ul>
         </div>
     </nav>

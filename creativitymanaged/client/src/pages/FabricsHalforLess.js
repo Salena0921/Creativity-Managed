@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../components/Nav";
 
-class PatternsInStock extends Component {
+class FabricsHalfOrLess extends Component {
 
   render() {
     return (
@@ -10,4 +10,4 @@ class PatternsInStock extends Component {
   }
 }
 
-export default PatternsInStock;
+export default FabricsHalfOrLess;
