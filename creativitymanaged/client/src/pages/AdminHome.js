@@ -1,17 +1,22 @@
-import React, {Component} from "react";
-import Nav from "../components/Nav";
-import Home from "../components/Home"
+import React, { Component } from "react";
+import { Col, Row, Container } from "../components/Grid";
+import NavMenu from "../components/NavMenu";
 
-class Admin extends Component {    
-  
+class Admin extends Component {
+
   render() {
     return (
       <div>
-        <Nav />
-        <Home />      
+        <Container fluid>
+          <Row>
+            <Col size="md-6">
+              <NavMenu />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
 }
-  
-  export default Admin;
+
+export default Admin;

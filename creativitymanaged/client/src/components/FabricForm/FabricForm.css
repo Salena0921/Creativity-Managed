@@ -1,0 +1,30 @@
+/* Form */
+form{
+    float: right;
+    position: relative;
+    right: 100px;
+    top: 50px;
+}
+label{
+    margin: 10px;
+}
+#fabric_name{
+    width: 425px;
+    margin-top: 5px
+}
+#fabric_yardage{
+    width: 425px;
+    margin-top: 5px
+}
+#exampleFormControlTextarea1{
+    width: 525px;  
+    height: 200px;
+    margin-top: 5px
+}
+#fabric_type{
+    width: 275px;
+    margin-top: 5px
+}
+#pattern_picture{
+    width: 500px
+}

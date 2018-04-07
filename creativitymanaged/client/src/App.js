@@ -7,6 +7,14 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 
+import HomePage from "./pages/HomePage";
+import Admin from "./pages/AdminHome";
+import CurrentProjects from "./pages/CurrentProjects";
+import CompletedFutureProjects from "./pages/CandFProjects";
+import PatternsInStock from "./pages/PatternsInStock";
+import PatternsDW from "./pages/PatternsDandW";
+import FabricsInStock from "./pages/FabricsInStock";
+import FabricsHalfOrLess from "./pages/FabricsHalforLess";
 
 class App extends Component {
   state = {
@@ -84,10 +92,10 @@ class App extends Component {
     const loggedIn = this.state.auth.isAuthenticated;
     return (
       <Router>
-        <div>
+        <div>          
           <Route exact path="/" render={() => {
             if (loggedIn) {
-              return <Redirect to="/home" />
+              return <Redirect to="/adminhome" />
             } else {
               return <SignIn
                 handleChange={this.handleChange}
@@ -99,7 +107,7 @@ class App extends Component {
           }} />
           <Route exact path="/signup" render={() => {
             if (loggedIn) {
-              return <Redirect to="/home" />
+              return <Redirect to="/adminhome" />
             } else {
               return <SignUp
                 handleChange={this.handleChange}
@@ -109,17 +117,32 @@ class App extends Component {
               />
             }
           }} />
-          <Route exact path="/home" render={() => {
+          {/* <Route exact path="/home" render={() => {
             if (!loggedIn) {
               return <Redirect to="/" />
             } else {
               return <Home handleLogout={this.handleLogout} auth={this.state.auth} />
             }
           }
-          } />
+          } /> */}
+          <Route exact path="/home" component={HomePage} render={() => {
+            if (!loggedIn) {
+              return <Redirect to="/adminhome" />
+            } else {
+              return <Home handleLogout={this.handleLogout} auth={this.state.auth} />
+            }
+          }
+          } />          
+          <Route exact path="/adminhome" render={ ()=>{return <Admin />} } />
+          <Route exact path="/current-projects" render={()=>{return <CurrentProjects handleLogout={this.handleLogout} />}} />
+          <Route exact path="/completedfuture" component={CompletedFutureProjects} />
+          <Route exact path="/patterns-in-stock" component={PatternsInStock} />
+          <Route exact path="/damagedwishlist-patterns" component={PatternsDW} />
+          <Route exact path="/fabrics-in-stock" component={FabricsInStock} />
+          <Route exact path="/fabricshalfyardunder" component={FabricsHalfOrLess} />
         </div>
       </Router>
-    
+
     );
   }
 }

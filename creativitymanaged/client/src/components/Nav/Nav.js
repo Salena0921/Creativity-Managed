@@ -58,7 +58,7 @@ const Nav = props => (
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <ul>
                             <li className={window.location.pathname === "/fabrics-in-stock" ? "active" : ""}>
-                                <Link to="/patterns-in-stock">Fabrics In Stock</Link>
+                                <Link to="/fabrics-in-stock">Fabrics In Stock</Link>
                             </li>
                             <div className="dropdown-divider"></div>
                             <li className={window.location.pathname === "/fabricshalfyard&under" ? "active" : ""}>
@@ -71,6 +71,7 @@ const Nav = props => (
                     <a className="nav-link">Main Portfolio Page</a>
                 </li>
             </ul>
+            <button onClick= {props.handleLogout} > sign out </button>
         </div>
     </nav>
 );
