@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -25,4 +26,10 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.adminpage{
+    background-image: url("./images/roseborder.jpg"); 
+    background-repeat: no-repeat;
+    background-size: 600px 500px;             
 }

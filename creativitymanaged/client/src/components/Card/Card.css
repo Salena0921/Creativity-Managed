@@ -1,9 +1,9 @@
 .card{
     margin: 25px;
     width: 500px;
-    height: 775px;  
+    height: 700px;  
     float: left;
     position: relative;
-    left: 50px;
+    left: 150px;
     top: 25px
 }

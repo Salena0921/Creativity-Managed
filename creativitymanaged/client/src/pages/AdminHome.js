@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import NavMenu from "../components/NavMenu";
+import Jumbotron from "../components/Jumbotron";
+import '../App.css';
 
 class Admin extends Component {
 
   render() {
     return (
-      <div>        
+      <div className="adminpage" >        
         <Container fluid>
           <Row>
-            <Col size="md-6">
+            <Jumbotron>
+              <h1>Midnight Fairy Realm Designs</h1>
+            </Jumbotron>  
+          </Row>    
+          <Row>
+            <Col size="md-4">
               <NavMenu handleLogout={this.props.handleLogout} />
             </Col>
           </Row>

@@ -2,26 +2,24 @@
 form{
     float: right;
     position: relative;
-    right: 100px;
-    top: 50px;
+    right: 175px;
+    top: 25px;
+    text-align: center;
 }
 label{
     margin: 10px;
 }
 #design_name{
-    width: 425px;
+    width: 200px;
     margin-top: 5px
 }
 #design_concept{
-    width: 425px;
+    width: 200px;
     margin-top: 5px
 }
-#pattern_brand{
-    width: 425px;
-    margin-top: 5px
-}
+
 #exampleFormControlTextarea1{
-    width: 525px;  
+    width: 400px;  
     height: 200px;
     margin-top: 5px
 }
