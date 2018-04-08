@@ -6,7 +6,6 @@ import axios from 'axios';
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
-
 import HomePage from "./pages/HomePage";
 import Admin from "./pages/AdminHome";
 import CurrentProjects from "./pages/CurrentProjects";
@@ -117,29 +116,65 @@ class App extends Component {
               />
             }
           }} />
-          {/* <Route exact path="/home" render={() => {
-            if (!loggedIn) {
-              return <Redirect to="/" />
-            } else {
-              return <Home handleLogout={this.handleLogout} auth={this.state.auth} />
-            }
-          }
-          } /> */}
-          <Route exact path="/home" component={HomePage} render={() => {
+         <Route exact path="/home" component={HomePage} render={() => {
             if (!loggedIn) {
               return <Redirect to="/adminhome" />
             } else {
               return <Home handleLogout={this.handleLogout} auth={this.state.auth} />
             }
           }
-          } />          
-          <Route exact path="/adminhome" render={ ()=>{return <Admin />} } />
-          <Route exact path="/current-projects" render={()=>{return <CurrentProjects handleLogout={this.handleLogout} />}} />
-          <Route exact path="/completedfuture" component={CompletedFutureProjects} />
-          <Route exact path="/patterns-in-stock" component={PatternsInStock} />
-          <Route exact path="/damagedwishlist-patterns" component={PatternsDW} />
-          <Route exact path="/fabrics-in-stock" component={FabricsInStock} />
-          <Route exact path="/fabricshalfyardunder" component={FabricsHalfOrLess} />
+          } />           
+          <Route exact path="/adminhome" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <Admin handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }           
+        }} />
+          
+          <Route exact path="/current-projects" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <CurrentProjects handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
+          
+          <Route exact path="/completedfuture" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <CompletedFutureProjects handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
+          <Route exact path="/patterns-in-stock" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <PatternsInStock handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
+          <Route exact path="/damagedwishlist-patterns" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <PatternsDW handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
+          <Route exact path="/fabrics-in-stock" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <FabricsInStock handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
+          <Route exact path="/fabricshalfyardunder" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <FabricsHalfOrLess handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
         </div>
       </Router>
 

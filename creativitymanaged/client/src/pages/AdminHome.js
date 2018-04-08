@@ -6,11 +6,11 @@ class Admin extends Component {
 
   render() {
     return (
-      <div>
+      <div>        
         <Container fluid>
           <Row>
             <Col size="md-6">
-              <NavMenu />
+              <NavMenu handleLogout={this.props.handleLogout} />
             </Col>
           </Row>
         </Container>

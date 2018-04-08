@@ -9,7 +9,7 @@ class FabricsInStock extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav handleLogout={this.props.handleLogout} />
       <Container fluid>
         <Row>
           <Col size="md-6">

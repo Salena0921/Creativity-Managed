@@ -8,19 +8,19 @@ const DesignForm = (props) => {
 			<form>
 				<div>
 					<div className="form-group" id="design_name">
-						<label for="exampleFormControlInput1">Design Name</label>
+						<label className="exampleFormControlInput1">Design Name</label>
 						<input value={props.designname} onChange={props.handleChange} name='designname' type='text' placeholder='Design Name' />					
 					</div>
 					<div className="form-group" id="design_concept">
-						<label for="exampleFormControlInput1">Design Concept</label>
+						<label className="exampleFormControlInput1">Design Concept</label>
 						<input value={props.designconcept} onChange={props.handleChange} name='designconcept' type='text' placeholder='Design Concept' />						
 					</div>								
 					<div className="form-group" id="design_description">
-						<label for="exampleFormControlTextarea1">Design Description</label>
+						<label className="exampleFormControlTextarea1">Design Description</label>
 						<textarea className="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
 					</div>
 					<div className="form-group" id="design_picture">
-						<label for="exampleFormControlFile1" id="picture_head">Design Picture</label>
+						<label className="exampleFormControlFile1" id="picture_head">Design Picture</label>
 						<input type="file" className="form-control-file" id="exampleFormControlFile1" />
 					</div>
 					<button type='submit' name="sumbitform" onClick={props.handleSubmit}>Submit</button>					

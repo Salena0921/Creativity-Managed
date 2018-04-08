@@ -42,6 +42,7 @@ const NavMenu = props => (
                 <a>Main Portfolio Page</a>
             </li>
         </ul>
+        <button onClick= {props.handleLogout} > sign out </button>
     </div>
    
 );
