@@ -4,7 +4,7 @@ import "./Nav.css";
 
 
 const Nav = props => (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
         <h2 className="navbar-brand" id="titlenav">Midnight Fairy Realm Designs</h2>
         {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">

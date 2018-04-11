@@ -1,5 +1,11 @@
+nav{
+    background-color: white;
+    position: relative;
+    top: 30px;
+}
+
 .navbar-nav{
-    width: 1500px;  
+    width: 100%;  
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;       
 }
@@ -11,7 +17,7 @@
     font-size: 35px;  
     float: left;
     position: relative;
-    left: 25px;
+    left: 100px;
     top: 1px; 
 }
 
@@ -46,7 +52,7 @@
 #signoutnav{
     float: right;
     position: relative;
-    right: 275px;
+    right: 125px;
     top: 1px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;  

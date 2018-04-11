@@ -1,32 +1,55 @@
 /* Form */
-form{
-    float: right;
+.designform{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;   
+    font-size: 20px;    
+    float: left;
     position: relative;
-    right: 175px;
-    top: 25px;
-    text-align: center;
+    left: 335px;
+    top: 100px; 
+    color: #1a3c34;   
 }
 label{
-    margin: 10px;
+    margin: 10px;    
+}
+.exampleFormControlInput1{    
+    float: left;
+    position: relative;
+    left: 200px;
+}
+.exampleFormControlFile2{
+    width: 525px;    
 }
 #design_name{
-    width: 200px;
-    margin-top: 5px
+    margin-top: 5px;  
+    width: 525px;   
 }
 #design_concept{
-    width: 200px;
-    margin-top: 5px
+    margin-top: 5px;
+    width: 525px; 
 }
-
-#exampleFormControlTextarea1{
-    width: 400px;  
+.exampleFormControlTextarea1,
+#picture_head{
+    float: left;
+    position: relative;
+    left: 200px;
+    width: 525px;
+}
+#exampleFormControlTextarea2{
+    width: 525px;  
     height: 200px;
     margin-top: 5px
 }
-#dropdown{
-    width: 275px;
-    margin-top: 5px
+#picture{
+    float: left;
+    position: relative;
+    left: 150px;
+    margin: 10px;
 }
-#pattern_picture{
-    width: 500px
+#designsubmit{
+    position: relative;
+    right: 350px;
+    top: 100px;
+    margin: 10px;
 }
+
