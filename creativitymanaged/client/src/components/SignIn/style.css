@@ -6,28 +6,28 @@
     background-position: 500px 0px;    
   }
 
-#fairysignin{
+#fairysignin {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;   
+    font-weight: 700;
     font-size: 35px;
-    color: #1a3c34;   
+    color: #1a3c34;
     position: relative;
     left: 700px;
     top: 275px;
 }
 
-h4{
+h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;   
+    font-weight: 700;
     font-size: 30px;
-    color: #1a3c34;   
+    color: #1a3c34;
     position: relative;
     left: 825px;
     top: 275px;
 }
 
 form,
-#link{
+#link {
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
     position: relative;
