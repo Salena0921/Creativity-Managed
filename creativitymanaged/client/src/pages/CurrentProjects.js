@@ -63,8 +63,7 @@ class CurrentProjects extends Component {
                         <ListItem key={design._id}>                        
                           <a href={"/designs/" + design._id} />
                           <ul>
-                            <li>{design.designname} {design.designconcept} {design.designdescription}</li>
-                            
+                            <li>{design.designname} {design.designconcept} {design.designdescription}</li>                            
                           </ul>
                         </ListItem>
                       );

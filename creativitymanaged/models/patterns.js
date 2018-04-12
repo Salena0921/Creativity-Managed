@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const patternSchema = new Schema({
-    name: {type: String, required: true},
-    category: {type:String, required: true},
-    patternNumber: {type: Number, required: true},
-    brand: {type: String, required: true},
-    sizes: String ,
-    status: { type: String, default: "in-stock"}   
+    patternname: {type: String, required: true},
+    patterncategory: {type:String, required: true},
+    patternnumber: {type: Number, required: true},
+    patternbrand: {type: String, required: true},
+    patternsizes: String ,
+    // status: { type: String, default: "in-stock"}   
 });
 
 const Pattern = mongoose.model("Pattern", patternSchema);

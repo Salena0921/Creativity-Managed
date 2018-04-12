@@ -1,30 +1,58 @@
 /* Form */
-form{
-    float: right;
+.fabricform{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;   
+    font-size: 20px;    
+    float: left;
     position: relative;
-    right: 100px;
-    top: 50px;
+    left: 335px;
+    top: 80px; 
+    color: #1a3c34;   
 }
 label{
-    margin: 10px;
+    margin: 10px;    
+}
+.exampleFormControlInput1{    
+    float: left;
+    position: relative;
+    left: 200px;
+}
+.exampleFormControlFile2{
+    width: 525px;    
 }
 #fabric_name{
-    width: 425px;
-    margin-top: 5px
-}
-#fabric_yardage{
-    width: 425px;
-    margin-top: 5px
-}
-#exampleFormControlTextarea1{
-    width: 525px;  
-    height: 200px;
-    margin-top: 5px
+    margin-top: 4px;  
+    width: 525px;   
 }
 #fabric_type{
-    width: 275px;
-    margin-top: 5px
+    margin-top: 4px;
+    width: 525px; 
 }
-#pattern_picture{
-    width: 500px
+#fabric_yardage{
+    margin-top: 4px;
+    width: 525px; 
+}
+.exampleFormControlTextarea1,
+#picture_head{
+    float: left;
+    position: relative;
+    left: 200px;
+    width: 525px;
+}
+#exampleFormControlTextarea2{
+    width: 525px;  
+    height: 200px;
+    margin-top: 4px
+}
+#picture{
+    float: left;
+    position: relative;
+    left: 150px;
+    margin: 10px;
+}
+#fabricsubmit{
+    position: relative;
+    left: 200px;
+    top: 20px;
+    margin: 10px;
 }

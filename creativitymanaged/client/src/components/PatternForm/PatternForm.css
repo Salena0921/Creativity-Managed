@@ -1,34 +1,58 @@
 /* Form */
-form{
-    float: right;
+.patternform{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;   
+    font-size: 20px;    
+    float: left;
     position: relative;
-    right: 100px;
-    top: 50px;
+    left: 335px;
+    top: 50px; 
+    color: #1a3c34;   
 }
-label{
-    margin: 10px;
+
+.exampleFormControlInput1{    
+    float: left;
+    position: relative;
+    left: 200px;
 }
-#pattern_name{
-    width: 425px;
-    margin-top: 5px
+.exampleFormControlFile2{
+    width: 525px;    
 }
+#pattern_name,
+#pattern_sizes,
+#pattern_picture,
+#pattern_category{
+    margin-top: 2px;  
+    width: 525px;   
+}
+
 #pattern_number{
-    width: 425px;
-    margin-top: 5px
+    margin-top: 2px;
+    width: 525px; 
 }
 #pattern_brand{
-    width: 425px;
-    margin-top: 5px
+    margin-top: 2px;
+    width: 525px; 
 }
-#exampleFormControlTextarea1{
+.exampleFormControlTextarea1,
+#picture_head{
+    float: left;
+    position: relative;
+    left: 200px;
+    width: 525px;
+}
+#exampleFormControlTextarea2{
     width: 525px;  
-    height: 200px;
-    margin-top: 5px
+    height: 150px;
+    margin-top: 2px
 }
-#dropdown{
-    width: 275px;
-    margin-top: 5px
+#picture{
+    float: left;
+    position: relative;
+    left: 150px;    
 }
-#pattern_picture{
-    width: 500px
+#patternsubmit{
+    position: relative;
+    left: 210px;
+    top: 15px;    
 }

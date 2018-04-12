@@ -1,20 +1,19 @@
-import React, {Component} from "react";
-import Home from "../components/Home";
+import React, { Component } from "react";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
+import '../App.css';
+import { Container } from "../components/Grid";
 
-class HomePage extends Component {    
-  
+class HomePage extends Component {
+
   render() {
     return (
       <div>
-        <Home />
-        <SignIn />
-        <SignUp />
-
+          <SignIn />
+          <SignUp />        
       </div>
     );
   }
 }
-  
-  export default HomePage;
+
+export default HomePage;

@@ -5,16 +5,15 @@ const PatternForm = (props) => {
 
 	return (
 		<div>
-			<form>
+			<form className="patternform">
 				<div>
 					<div className="form-group" id="pattern_name">
 						<label className="exampleFormControlInput1">Pattern Name</label>
-						<input value={props.patternname} onChange={props.handleChange} name='patternname' type='text' placeholder='Pattern Name' />
-						{/* <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Pattern Name" /> */}
+						<input onChange={props.handleInputChange} name='patternname' type='text' placeholder='Pattern Name' className="exampleFormControlFile2"/>						
 					</div>
-					<div className="form-group" id="dropdown">
+					<div className="form-group" id="pattern_category">
 						<label className="exampleFormControlSelect1">Category</label>
-						<select className="form-control" id="exampleFormControlSelect1">
+						<select onChange={props.handleInputChange} name='patterncategory' className="form-control" id="exampleFormControlSelect1">
 							<option>Costume</option>
 							<option>Dress</option>
 							<option>Top</option>
@@ -24,25 +23,21 @@ const PatternForm = (props) => {
 					</div>
 					<div className="form-group" id="pattern_number">
 						<label className="exampleFormControlInput1">Pattern Number</label>
-						<input value={props.patternnumber} onChange={props.handleChange} name='patternnumber' type='text' placeholder='Pattern Number' />
-						{/* <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Pattern Number" /> */}
+						<input onChange={props.handleInputChange} name='patternnumber' type='text' placeholder='Pattern Number' className="exampleFormControlFile2"/>						
 					</div>
 					<div className="form-group" id="pattern_brand">
 						<label className="exampleFormControlInput1">Pattern Brand</label>
-						<input value={props.patternbrand} onChange={props.handleChange} name='patternbrand' type='text' placeholder='Pattern Brand' />
-						{/* <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Pattern Brand" /> */}
-					</div>
-					{/* <TextArea name="patternsizes" placeholder="Pattern Sizes(Reqiured)" /> */}
+						<input onChange={props.handleInputChange} name='patternbrand' type='text' placeholder='Pattern Brand' className="exampleFormControlFile2"/>						
+					</div>					
 					<div className="form-group" id="pattern_sizes">
 						<label className="exampleFormControlTextarea1">Pattern Sizes</label>
-						<textarea className="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+						<textarea className="form-control" id="exampleFormControlTextarea2" rows="10" name='patternsizes' type='text' placeholder='Pattern Sizes' onChange={props.handleInputChange}></textarea>
 					</div>
 					<div className="form-group" id="pattern_picture">
 						<label className="exampleFormControlFile1" id="picture_head">Pattern Picture</label>
 						<input type="file" className="form-control-file" id="exampleFormControlFile1" />
 					</div>
-					<button type='submit' name="sumbitform" onClick={props.handleSubmit}>Submit</button>
-					{/* <button type="submit" className="btn btn-primary mb-2" id="submit_button">Submit</button> */}
+					<button type='submit' name="sumbitform" onClick={props.handleFormSubmit} id="patternsubmit">Submit</button>					
 				</div>
 			</form>
 		</div>
