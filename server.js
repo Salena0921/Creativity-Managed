@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const aws = require("aws-sdk");
 const models = require("./models");
 
 const passport = require("passport");
@@ -23,6 +24,16 @@ require('./config/passport.js')(passport,models.User);
 const routes = require("./routes")(passport);
 app.use('/',routes);
 
+const S3_BUCKET = process.env.S3_BUCKET;
+app.use('/s3', require('react-s3-uploader/s3router')({
+  bucket: "creativity-managed",
+  AWS_ACCESS_KEY_ID = "AKIAIYPF4RDXGGKHZCRQ",
+  region: 'us-east-1', //optional
+  signatureVersion: 'v4', //optional (use for some amazon regions: frankfurt and others)
+  headers: {'Access-Control-Allow-Origin': '*'}, // optional
+  ACL: 'private', // this is default
+  uniquePrefix: true // (4.0.2 and above) default is true, setting the attribute to false preserves the original filename in S3
+}));
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;

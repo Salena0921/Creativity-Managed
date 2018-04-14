@@ -12,7 +12,8 @@ class CurrentProjects extends Component {
     designs:[],
     designname: "",
     designconcept: "",
-    designdescription: ""
+    designdescription: "",
+    filepicture: ""
   };
 
   componentDidMount(){
@@ -75,7 +76,7 @@ class CurrentProjects extends Component {
               </Card>
             </Col>
             <Col size="md-6">
-              <DesignForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSumbit}/>
+              <DesignForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSumbit} />
             </Col>
           </Row>
         </Container>
