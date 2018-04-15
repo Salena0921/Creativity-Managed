@@ -10,22 +10,23 @@ nav{
     font-weight: 700;       
 }
 
+#navbarmenu{
+    width: 100%;
+    float: left;
+    position: relative;
+    left: 200px;
+}
+
 #titlenav{
+    margin: 10px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
     color: #1a3c34;  
-    font-size: 35px;  
-    float: left;
-    position: relative;
-    left: 100px;
-    top: 1px; 
+    font-size: 40px;  
+    
 }
 
 .nav-item{
-    width: 160px;
-    float: right;
-    position: relative;
-    left: 300px;
     color: #007485;
     font-size: 25px;
 }
@@ -35,10 +36,6 @@ nav{
 }
 
 #homenav{
-    width: 175px;
-    float: right;
-    position: relative;
-    left: 350px;
     top: 8px;    
     font-size: 25px;
     color: #1a3c34;
@@ -50,10 +47,8 @@ nav{
 }
 
 #signoutnav{
-    float: right;
-    position: relative;
-    right: 125px;
-    top: 1px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;  
+    background-color: #1a3c34;
+    color: #007485;
 }

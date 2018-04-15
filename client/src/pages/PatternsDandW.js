@@ -8,21 +8,23 @@ class PatternsDW extends Component {
   render() {
     return (
       <div>
-        <Nav handleLogout={this.props.handleLogout} />
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Card headertext="Damaged Patterns" {...this.props}>
-              hello world
+        <Container fluid>
+          <Row>
+            <Nav handleLogout={this.props.handleLogout} />
+          </Row>
+          <Row>
+            <Col size="md-6">
+              <Card headertext="Damaged Patterns" {...this.props}>
+                hello world
             </Card>
-          </Col>
-          <Col size="md-6">
-            <Card headertext="Wishlist Patterns" {...this.props}>
-              hello world
+            </Col>
+            <Col size="md-6">
+              <Card headertext="Wishlist Patterns" {...this.props}>
+                hello world
             </Card>
-          </Col>
-        </Row>
-      </Container>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

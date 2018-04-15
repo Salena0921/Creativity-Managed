@@ -3,29 +3,29 @@ import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import Nav from "../components/Nav";
 import { List, ListItem } from "../components/List";
-import DesignForm from "../components/DesignForm";
+import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import '../App.css';
 
 class CurrentProjects extends Component {
   state = {
-    designs:[],
+    designs: [],
     designname: "",
     designconcept: "",
     designdescription: "",
     filepicture: ""
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.loadDesigns();
   }
 
   loadDesigns = () => {
     API.getDesigns()
-    .then(res =>
-      this.setState({ designs: res.data, designname: "", designconcept: "", designdescription: ""})
-    )
-    .catch(err => console.log(err));
+      .then(res =>
+        this.setState({ designs: res.data, designname: "", designconcept: "", designdescription: "" })
+      )
+      .catch(err => console.log(err));
   }
 
   handleInputChange = event => {
@@ -34,19 +34,19 @@ class CurrentProjects extends Component {
       [name]: value
     })
   }
- handlePictureChange = event => {
-  const { name, value } = event.target;
-  const file = event.target.files[0];
-  console.log(event.target.files);
-//  const file = ;
- if(file == null){
-   return alert('No file selected.');
- }
- this.getSignedRequest(file);
-}
+  handlePictureChange = event => {
+    const { name, value } = event.target;
+    const file = event.target.files[0];
+    console.log(event.target.files);
+    //  const file = ;
+    if (file == null) {
+      return alert('No file selected.');
+    }
+    this.getSignedRequest(file);
+  }
 
   handleFormSumbit = event => {
-    console.log ("submit button")
+    console.log("submit button")
     event.preventDefault();
     if (this.state.designname && this.state.designconcept && this.state.designdescription) {
       API.saveDesign({
@@ -59,33 +59,33 @@ class CurrentProjects extends Component {
     }
   };
 
-  uploadFile=(file, signedRequest, url)=>{
+  uploadFile = (file, signedRequest, url) => {
     const xhr = new XMLHttpRequest();
     xhr.open('PUT', signedRequest);
     xhr.onreadystatechange = () => {
-      if(xhr.readyState === 4){
-        if(xhr.status === 200){
-          // document.getElementById('preview').src = url;
-          // document.getElementById('avatar-url').value = url;
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          document.getElementById('preview').src = url;
+          document.getElementById('avatar-url').value = url;
         }
-        else{
+        else {
           alert('Could not upload file.');
         }
       }
     };
     xhr.send(file);
   }
-  
-  getSignedRequest=(file)=>{
+
+  getSignedRequest = (file) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
     xhr.onreadystatechange = () => {
-      if(xhr.readyState === 4){
-        if(xhr.status === 200){
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
           const response = JSON.stringify(xhr.responseText);
           this.uploadFile(file, response.signedRequest, response.url);
         }
-        else{
+        else {
           alert('Could not get signed URL.');
         }
       }
@@ -93,22 +93,24 @@ class CurrentProjects extends Component {
     xhr.send();
   }
 
-    render() {
+  render() {
     return (
       <div className="currentproject">
-        <Nav handleLogout={this.props.handleLogout} />
         <Container fluid>
           <Row>
-            <Col size="md-4">
+            <Nav handleLogout={this.props.handleLogout} />
+          </Row>
+          <Row>
+            <Col size="xl-6">
               <Card headertext="Current Projects" {...this.props} id="currentcard">
                 {this.state.designs.length ? (
                   <List>
                     {this.state.designs.map(design => {
                       return (
-                        <ListItem key={design._id}>                        
+                        <ListItem key={design._id}>
                           <a href={"/designs/" + design._id} />
                           <ul>
-                            <li>{design.designname} {design.designconcept} {design.designdescription}</li>                            
+                            <li>{design.designname} {design.designconcept} {design.designdescription}</li>
                           </ul>
                         </ListItem>
                       );
@@ -119,8 +121,39 @@ class CurrentProjects extends Component {
                   )}
               </Card>
             </Col>
-            <Col size="md-6">
-              <DesignForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSumbit} handlePictureChange={this.handlePictureChange}/>
+            <Col size="xl-6">
+              <form style={{ position: "relative",float: "left",left: 50, margin: 10, top: 150, width: 500}}>
+                <Input
+                  value={this.state.designname}
+                  onChange={this.handleInputChange}
+                  name="designname"
+                  placeholder="Design Name (required)"
+                />
+                <Input
+                  value={this.state.designconcept}
+                  onChange={this.handleInputChange}
+                  name="designconcept"
+                  placeholder="Design Concept (required)"
+                />
+                <TextArea
+                  value={this.state.designdescription}
+                  onChange={this.handleInputChange}
+                  name="designdescription"
+                  placeholder="Design Description (Optional)"
+                />
+                <Input
+                  value={this.state.filepicture}
+                  onChange={this.handlePictureChange}
+                  type="file"
+                  name="picture"
+                  placeholder="Design Picture (required)"
+                />
+                <FormBtn
+                  onClick={this.handleFormSumbit}
+                >
+                  Submit Design
+              </FormBtn>
+              </form>
             </Col>
           </Row>
         </Container>

@@ -3,29 +3,29 @@ import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import Nav from "../components/Nav";
 import { List, ListItem } from "../components/List";
-import FabricForm from "../components/FabricForm";
+import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import '../App.css';
 
 class FabricsInStock extends Component {
   state = {
-    fabrics:[],
+    fabrics: [],
     fabricname: "",
     fabrictype: "",
     fabricyardage: "",
     fabricwashing: ""
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.loadFabrics();
   }
 
   loadFabrics = () => {
     API.getFabrics()
-    .then(res =>
-      this.setState({ fabrics: res.data, fabricname: "", fabrictype: "", fabricyardage: "", fabricwashing: ""})
-    )
-    .catch(err => console.log(err));
+      .then(res =>
+        this.setState({ fabrics: res.data, fabricname: "", fabrictype: "", fabricyardage: "", fabricwashing: "" })
+      )
+      .catch(err => console.log(err));
   }
 
   handleInputChange = event => {
@@ -36,7 +36,7 @@ class FabricsInStock extends Component {
   }
 
   handleFormSumbit = event => {
-    console.log ("submit button")
+    console.log("submit button")
     event.preventDefault();
     if (this.state.fabricname && this.state.fabrictype && this.state.fabricyardage) {
       API.saveFabric({
@@ -53,19 +53,21 @@ class FabricsInStock extends Component {
   render() {
     return (
       <div>
-        <Nav handleLogout={this.props.handleLogout} />
-      <Container fluid>
-        <Row>
-          <Col size="md-4">
-            <Card headertext="Fabrics In Stock" {...this.props} id="fabricinstock">
-            {this.state.fabrics.length ? (
+        <Container fluid>
+          <Row>
+            <Nav handleLogout={this.props.handleLogout} />
+          </Row>
+          <Row>
+            <Col size="xl-6">
+              <Card headertext="Fabrics In Stock" {...this.props} id="fabricinstock">
+                {this.state.fabrics.length ? (
                   <List>
                     {this.state.fabrics.map(fabric => {
                       return (
-                        <ListItem key={fabric._id}>                        
+                        <ListItem key={fabric._id}>
                           <a href={"/fabrics/" + fabric._id} />
                           <ul>
-                            <li>{fabric.fabricname} {fabric.fabrictype} {fabric.fabricyardage} {fabric.fabricwashing}</li>                            
+                            <li>{fabric.fabricname} {fabric.fabrictype} {fabric.fabricyardage} {fabric.fabricwashing}</li>
                           </ul>
                         </ListItem>
                       );
@@ -74,13 +76,50 @@ class FabricsInStock extends Component {
                 ) : (
                     <h3>No Results to Display</h3>
                   )}
-            </Card>
-          </Col>
-          <Col size="md-6">
-            <FabricForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSumbit}/>
-          </Col>
-        </Row>
-      </Container>
+              </Card>
+            </Col>
+            <Col size="xl-6">
+              <form style={{ position: "relative", float: "left", left: 50, margin: 10, top: 150, width: 500 }}>
+                <Input
+                  value={this.state.fabricname}
+                  onChange={this.handleInputChange}
+                  name="fabricname"
+                  placeholder="Fabric Name (required)"
+                />
+                <Input
+                  value={this.state.fabrictype}
+                  onChange={this.handleInputChange}
+                  name="fabrictype"
+                  placeholder="Fabric Type (required)"
+                />
+                <Input
+                  value={this.state.fabricyardage}
+                  onChange={this.handleInputChange}
+                  name="fabricyardage"
+                  placeholder="Fabric Yardage (required)"
+                />
+                <TextArea
+                  value={this.state.fabricwashing}
+                  onChange={this.handleInputChange}
+                  name="fabricwashing"
+                  placeholder="Fabric Washing Instructions (Optional)"
+                />
+                <Input
+                  value={this.state.filepicture}
+                  onChange={this.handlePictureChange}
+                  type="file"
+                  name="picture"
+                  placeholder="Fabric Picture (required)"
+                />
+                <FormBtn
+                  onClick={this.handleFormSumbit}
+                >
+                  Submit Fabric
+              </FormBtn>
+              </form>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

@@ -1,14 +1,14 @@
 .card{
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;    
-    font-size: 20px;   
-    margin: 25px;
-    width: 600px;
-    height: 700px;  
-    float: left;
-    position: relative;
-    left: 200px;
-    top: 70px;
+    font-size: 20px;
+    float: left;  
+    position: relative; 
+    margin: 10px;
+    height: 600px;
+    width: 500px;
+    top: 100px;
+    left: 50px;
     color: #1a3c34;
 }
 

@@ -14,7 +14,7 @@
 a{
     color: #007485;
 }
-
+/* 
 button{
     float: left;
     position: relative;
@@ -26,7 +26,7 @@ button{
     font-size: 18px;
     color: #007485;
     background-color: #1a3c34;
-}
+} */
 
 .dropdown-divider{
     border-top: 1px solid #007485;

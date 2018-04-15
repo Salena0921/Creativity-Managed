@@ -8,24 +8,26 @@ class CompletedFutureProjects extends Component {
   render() {
     return (
       <div>
-        <Nav handleLogout={this.props.handleLogout} />
         <Container fluid>
           <Row>
-            <Col size="md-6">
-              <Card headertext="Completed Projects" {...this.props}>
-                hello world
+            <Nav handleLogout={this.props.handleLogout} />
+          </Row>          
+          <Row>
+              <Col size="xl-6">
+                <Card headertext="Completed Projects" {...this.props}>
+                  hello world
                </Card>
-            </Col>
-            <Col size="md-6">
-              <Card headertext="Future Projects" {...this.props}>
-                hello world
+              </Col>
+              <Col size="xl-6">
+                <Card headertext="Future Projects" {...this.props}>
+                  hello world
               </Card>
-            </Col>
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+          </Container>
       </div>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 export default CompletedFutureProjects;
