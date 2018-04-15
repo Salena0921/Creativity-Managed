@@ -1,6 +1,5 @@
 import React from 'react';
 import "./DesignForm.css";
-import ReactS3Uploader from "../../pages/AWS-S3/s3uploader";
 
 const DesignForm = (props) => {
 
@@ -20,8 +19,9 @@ const DesignForm = (props) => {
 						<label className="exampleFormControlTextarea1">Design Description</label>
 						<textarea className="form-control" id="exampleFormControlTextarea2" rows="10" name='designdescription' type='text' placeholder='Design Description' onChange={props.handleInputChange}></textarea>
 					</div>
-					<div id="design_picture">
-						<ReactS3Uploader />
+					<div className="form-group" id="design_picture">
+						<label className="exampleFormControlFile1" id="picture_head">Design Picture</label>
+						<input onChange={props.handlePictureChange} type="file" className="form-control-file exampleFormControlFile2" name="picture" />
 					</div>
 					<button type='submit' name="sumbitform" onClick={props.handleFormSubmit} id="designsubmit">Submit</button>
 				</div>

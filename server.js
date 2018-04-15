@@ -1,8 +1,9 @@
 const express = require("express");
+const aws = require("aws-sdk");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const aws = require("aws-sdk");
+
 const models = require("./models");
 
 const passport = require("passport");
@@ -25,15 +26,35 @@ const routes = require("./routes")(passport);
 app.use('/',routes);
 
 const S3_BUCKET = process.env.S3_BUCKET;
-app.use('/s3', require('react-s3-uploader/s3router')({
-  bucket: "creativity-managed",
-  AWS_ACCESS_KEY_ID = "AKIAIYPF4RDXGGKHZCRQ",
-  region: 'us-east-1', //optional
-  signatureVersion: 'v4', //optional (use for some amazon regions: frankfurt and others)
-  headers: {'Access-Control-Allow-Origin': '*'}, // optional
-  ACL: 'private', // this is default
-  uniquePrefix: true // (4.0.2 and above) default is true, setting the attribute to false preserves the original filename in S3
-}));
+
+aws.config.region = 'US East (N. Virginia)';
+app.get('/account', (req, res) => res.render('account.html'));
+app.get('/sign-s3', (req, res) => {
+  const s3 = new aws.S3();
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;

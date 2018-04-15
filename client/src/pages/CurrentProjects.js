@@ -34,6 +34,16 @@ class CurrentProjects extends Component {
       [name]: value
     })
   }
+ handlePictureChange = event => {
+  const { name, value } = event.target;
+  const file = event.target.files[0];
+  console.log(event.target.files);
+//  const file = ;
+ if(file == null){
+   return alert('No file selected.');
+ }
+ this.getSignedRequest(file);
+}
 
   handleFormSumbit = event => {
     console.log ("submit button")
@@ -48,6 +58,40 @@ class CurrentProjects extends Component {
         .catch(err => console.log(err));
     }
   };
+  
+  getSignedRequest=(file)=>{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          var response = JSON.parse(xhr.responseText);
+          this.uploadFile(file, response.signedRequest, response.url);
+        }
+        else{
+          alert('Could not get signed URL.');
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  uploadFile=(file, signedRequest, url)=>{
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          document.getElementById('preview').src = url;
+          document.getElementById('avatar-url').value = url;
+        }
+        else{
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
 
   render() {
     return (
@@ -76,7 +120,7 @@ class CurrentProjects extends Component {
               </Card>
             </Col>
             <Col size="md-6">
-              <DesignForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSumbit} />
+              <DesignForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSumbit} handlePictureChange={this.handlePictureChange}/>
             </Col>
           </Row>
         </Container>
