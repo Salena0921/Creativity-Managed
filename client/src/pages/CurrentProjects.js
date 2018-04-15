@@ -58,6 +58,23 @@ class CurrentProjects extends Component {
         .catch(err => console.log(err));
     }
   };
+
+  uploadFile=(file, signedRequest, url)=>{
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          // document.getElementById('preview').src = url;
+          // document.getElementById('avatar-url').value = url;
+        }
+        else{
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
   
   getSignedRequest=(file)=>{
     const xhr = new XMLHttpRequest();
@@ -65,7 +82,7 @@ class CurrentProjects extends Component {
     xhr.onreadystatechange = () => {
       if(xhr.readyState === 4){
         if(xhr.status === 200){
-          var response = JSON.parse(xhr.responseText);
+          const response = JSON.stringify(xhr.responseText);
           this.uploadFile(file, response.signedRequest, response.url);
         }
         else{
@@ -76,24 +93,7 @@ class CurrentProjects extends Component {
     xhr.send();
   }
 
-  uploadFile=(file, signedRequest, url)=>{
-    const xhr = new XMLHttpRequest();
-    xhr.open('PUT', signedRequest);
-    xhr.onreadystatechange = () => {
-      if(xhr.readyState === 4){
-        if(xhr.status === 200){
-          document.getElementById('preview').src = url;
-          document.getElementById('avatar-url').value = url;
-        }
-        else{
-          alert('Could not upload file.');
-        }
-      }
-    };
-    xhr.send(file);
-  }
-
-  render() {
+    render() {
     return (
       <div className="currentproject">
         <Nav handleLogout={this.props.handleLogout} />
