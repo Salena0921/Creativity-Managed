@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import Admin from "./pages/AdminHome";
 import CurrentProjects from "./pages/CurrentProjects";
 import CompletedFutureProjects from "./pages/CandFProjects";
+import ProjectPlan from "./pages/ProjectPlan";
 import PatternsInStock from "./pages/PatternsInStock";
 import PatternsDW from "./pages/PatternsDandW";
 import FabricsInStock from "./pages/FabricsInStock";
@@ -147,6 +148,15 @@ class App extends Component {
               return <CompletedFutureProjects handleLogout={this.handleLogout} auth={this.state.auth}/>
             }   
           }} />
+
+          <Route exact path="/projectplan" render={()=>{
+            if (!loggedIn) {
+              return <Redirect to="/" />
+            } else {
+              return <ProjectPlan handleLogout={this.handleLogout} auth={this.state.auth}/>
+            }   
+          }} />
+
           <Route exact path="/patterns-in-stock" render={()=>{
             if (!loggedIn) {
               return <Redirect to="/" />

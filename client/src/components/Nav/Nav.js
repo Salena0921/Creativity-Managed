@@ -29,6 +29,9 @@ const Nav = props => (
                                 <li className={window.location.pathname === "/completed&future" ? "active" : ""}>
                                     <Link to="/completedfuture">Completed and Future Projects</Link>
                                 </li>
+                                <li className={window.location.pathname === "/projectplan" ? "active" : ""}>
+                                    <Link to="/projectplan">Project Plan</Link>
+                                </li>
                             </ul>
                         </div>
                     </li>

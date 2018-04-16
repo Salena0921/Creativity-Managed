@@ -8,6 +8,28 @@ import API from "../utils/API";
 import '../App.css';
 
 class ProjectPlan extends Component {
-
+    
+    render() {
+        return (
+            <div>
+                <Container fluid>
+                    <Row>
+                        <Nav handleLogout={this.props.handleLogout} />
+                    </Row>
+                    <Row>
+                        <Col size="xl-6">
+                            <Card>
+                               hello 
+                            </Card>
+                        </Col>
+                        <Col size="xl-6">
+                            <Card>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        );
+    }
 }
 export default ProjectPlan;
