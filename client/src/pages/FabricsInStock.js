@@ -38,12 +38,13 @@ class FabricsInStock extends Component {
   handleFormSumbit = event => {
     console.log("submit button")
     event.preventDefault();
-    if (this.state.fabricname && this.state.fabrictype && this.state.fabricyardage) {
+    if (this.state.fabricname && this.state.fabrictype && this.state.fabricyardage && this.state.fabricwashing ) {
       API.saveFabric({
         fabricname: this.state.fabricname,
         fabrictype: this.state.fabrictype,
         fabricyardage: this.state.fabricyardage,
         fabricwashing: this.state.fabricwashing
+        
       })
         .then(res => this.loadFabrics())
         .catch(err => console.log(err));
@@ -63,14 +64,19 @@ class FabricsInStock extends Component {
                 {this.state.fabrics.length ? (
                   <List>
                     {this.state.fabrics.map(fabric => {
-                      return (
-                        <ListItem key={fabric._id}>
-                          <a href={"/fabrics/" + fabric._id} />
-                          <ul>
-                            <li>{fabric.fabricname} {fabric.fabrictype} {fabric.fabricyardage} {fabric.fabricwashing}</li>
-                          </ul>
-                        </ListItem>
-                      );
+                      if (fabric.fabricyardage >= 0.5) {
+                        return (
+                          <ListItem key={fabric._id}>
+                            <a href={"/fabrics/" + fabric._id} />
+                            <ul>
+                              <li>{fabric.fabricname} {fabric.fabrictype} {fabric.fabricyardage} {fabric.fabricwashing} {fabric.fabricstatus}</li>
+                            </ul>
+                          </ListItem>
+                        );
+                      }
+                      else {
+                        return null;
+                      }
                     })}
                   </List>
                 ) : (

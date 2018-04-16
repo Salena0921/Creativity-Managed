@@ -6,7 +6,8 @@ const patternSchema = new Schema({
     patterncategory: {type:String, required: true},
     patternnumber: {type: Number, required: true},
     patternbrand: {type: String, required: true},
-    patternsizes: String ,
+    patternsizes: String,
+    patternstatus: String 
     // status: { type: String, default: "in-stock"}   
 });
 

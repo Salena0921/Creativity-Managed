@@ -7,7 +7,7 @@ const SignUp = (props)=> {
 		<div className="homepage" >
 			<h3 id="newfairy">NEW FAIRY SIGN UP</h3>
 			<Link to = "/" id="link">Fairy Sign In Page</Link>
-			<form>
+			<form id="signupform">
 				<label>Email</label><br/>
 				<input value = {props.username} onChange = {props.handleChange} name='username' type='email' placeholder = 'example@email.com'/>
 				<br />

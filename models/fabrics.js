@@ -5,7 +5,7 @@ const fabricSchema = new Schema({
     fabricname: {type:String, required: true},
     fabrictype: {type:String, required: true},
     fabricyardage: {type: Number, required: true},
-    fabricwashing: String,    
+    fabricwashing: String    
 });
 
 const Fabric = mongoose.model("Fabric", fabricSchema);

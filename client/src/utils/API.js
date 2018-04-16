@@ -45,7 +45,7 @@ export default {
     return axios.delete("/api/patterns/" + id);
   },
   
-  savePattern: function(fabricData) {
-    return axios.post("/api/patterns", fabricData);
+  savePattern: function(patternData) {
+    return axios.post("/api/patterns", patternData);
   }
 };

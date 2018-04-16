@@ -2,35 +2,39 @@
     height: 1000px;
     background-image: url("../../images/gothicframe.jpg");
     background-repeat: no-repeat;
-    background-size: 925px 925px; 
-    background-position: 500px 0px;    
+    background-size: 50% 90%; 
+    background-position: center 10px;
+       
   }
+
+.signinpage{
+    text-align: center;
+    margin: 25px;
+    position: relative;
+    top: 300px;
+    
+}
 
 #fairysignin {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
     font-size: 35px;
     color: #1a3c34;
-    position: relative;
-    left: 700px;
-    top: 275px;
+    
 }
 
 h4 {
+    text-align: center;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
     font-size: 30px;
     color: #1a3c34;
-    position: relative;
-    left: 825px;
-    top: 275px;
+    
 }
 
-
+#signinform,
 #link {
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
-    position: relative;
-    left: 850px;
-    top: 300px;
+    
 }

@@ -7,13 +7,15 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 import '../App.css';
 
+
 class CurrentProjects extends Component {
   state = {
     designs: [],
     designname: "",
     designconcept: "",
     designdescription: "",
-    filepicture: ""
+    filepicture: "",
+    designstatus: ""
   };
 
   componentDidMount() {
@@ -34,6 +36,7 @@ class CurrentProjects extends Component {
       [name]: value
     })
   }
+
   handlePictureChange = event => {
     const { name, value } = event.target;
     const file = event.target.files[0];
@@ -48,11 +51,12 @@ class CurrentProjects extends Component {
   handleFormSumbit = event => {
     console.log("submit button")
     event.preventDefault();
-    if (this.state.designname && this.state.designconcept && this.state.designdescription) {
+    if (this.state.designname && this.state.designconcept && this.state.designdescription && this.state.designstatus) {
       API.saveDesign({
         designname: this.state.designname,
         designconcept: this.state.designconcept,
-        designdescription: this.state.designdescription
+        designdescription: this.state.designdescription,
+        designstatus: this.state.designstatus
       })
         .then(res => this.loadDesigns())
         .catch(err => console.log(err));
@@ -106,14 +110,19 @@ class CurrentProjects extends Component {
                 {this.state.designs.length ? (
                   <List>
                     {this.state.designs.map(design => {
-                      return (
-                        <ListItem key={design._id}>
-                          <a href={"/designs/" + design._id} />
-                          <ul>
-                            <li>{design.designname} {design.designconcept} {design.designdescription}</li>
-                          </ul>
-                        </ListItem>
-                      );
+                      if (design.designstatus === "current") {
+                        return (
+                          <ListItem key={design._id}>
+                            <a href={"/designs/" + design._id} />
+                            <ul>
+                              <li>{design.designname} {design.designconcept} {design.designdescription} {design.designstatus}</li>
+                            </ul>
+                          </ListItem>
+                        );
+                      }
+                      else{
+                        return null;
+                      }
                     })}
                   </List>
                 ) : (
@@ -122,7 +131,7 @@ class CurrentProjects extends Component {
               </Card>
             </Col>
             <Col size="xl-6">
-              <form style={{ position: "relative",float: "left",left: 50, margin: 10, top: 150, width: 500}}>
+              <form style={{ position: "relative", float: "left", left: 50, margin: 10, top: 150, width: 500 }}>
                 <Input
                   value={this.state.designname}
                   onChange={this.handleInputChange}
@@ -134,6 +143,12 @@ class CurrentProjects extends Component {
                   onChange={this.handleInputChange}
                   name="designconcept"
                   placeholder="Design Concept (required)"
+                />
+                <Input
+                  value={this.state.designstatus}
+                  onChange={this.handleInputChange}
+                  name="designstatus"
+                  placeholder="Design Status (current, future, completed)"
                 />
                 <TextArea
                   value={this.state.designdescription}
@@ -149,10 +164,10 @@ class CurrentProjects extends Component {
                   placeholder="Design Picture (required)"
                 />
                 <FormBtn
-                  onClick={this.handleFormSumbit}
-                >
+                  onClick={this.handleFormSumbit}>
                   Submit Design
-              </FormBtn>
+                  </FormBtn>
+
               </form>
             </Col>
           </Row>

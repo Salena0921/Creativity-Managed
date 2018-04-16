@@ -1,4 +1,4 @@
-import React, { Component, Link } from "react";
+import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import Nav from "../components/Nav";
@@ -14,7 +14,8 @@ class PatternsInStock extends Component {
     patterncategory: "",
     patternnumber: "",
     patternbrand: "",
-    patternsizes: ""
+    patternsizes: "",
+    patternstatus: ""
   };
 
   componentDidMount() {
@@ -39,13 +40,14 @@ class PatternsInStock extends Component {
   handleFormSumbit = event => {
     console.log("submit button")
     event.preventDefault();
-    if (this.state.patternname && this.state.patterncategory && this.state.patternnumber && this.state.patternbrand && this.state.patternsizes) {
+    if (this.state.patternname && this.state.patterncategory && this.state.patternnumber && this.state.patternbrand && this.state.patternsizes && this.state.patternstatus) {
       API.savePattern({
         patternname: this.state.patternname,
         patterncategory: this.state.patterncategory,
         patternnumber: this.state.patternnumber,
         patternbrand: this.state.patternbrand,
-        patternsizes: this.state.patternsizes
+        patternsizes: this.state.patternsizes,
+        patternstatus: this.state.patternstatus
       })
         .then(res => this.loadPatterns())
         .catch(err => console.log(err));
@@ -62,17 +64,22 @@ class PatternsInStock extends Component {
           <Row>
             <Col size="xl-6">
               <Card headertext="Patterns In Stock" {...this.props} id="patterninstock">
-                {this.state.patterns.length ? (
+              {this.state.patterns.length ? (
                   <List>
                     {this.state.patterns.map(pattern => {
-                      return (
-                        <ListItem key={pattern._id}>
-                          <li href={"/patterns/" + pattern._id} />
-                          <ul>
-                            <li>{pattern.patternname} {pattern.patterncategory} {pattern.patternnumber} {pattern.patternbrand} {pattern.patternsizes}</li>
-                          </ul>
-                        </ListItem>
-                      );
+                      if (pattern.patternstatus === "in-stock") {
+                        return (
+                          <ListItem key={pattern._id}>
+                            <a href={"/patterns/" + pattern._id} />
+                            <ul>
+                              <li>{pattern.patternname} {pattern.patterncategory} {pattern.patternnumber} {pattern.patternbrand} {pattern.patternsizes} {pattern.patternstatus}</li>
+                            </ul>
+                          </ListItem>
+                        );
+                      }
+                      else{
+                        return null;
+                      }
                     })}
                   </List>
                 ) : (
@@ -105,6 +112,12 @@ class PatternsInStock extends Component {
                   onChange={this.handleInputChange}
                   name="patternbrand"
                   placeholder="Pattern Brand (required)"
+                />
+                <Input
+                  value={this.state.patternstatus}
+                  onChange={this.handleInputChange}
+                  name="patternstatus"
+                  placeholder="Pattern Status (in-stock, damaged, wishlist)"
                 />
                 <TextArea
                   value={this.state.patternsizes}
