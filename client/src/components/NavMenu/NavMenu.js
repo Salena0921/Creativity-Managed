@@ -18,11 +18,7 @@ const NavMenu = props => (
                 <div className="dropdown-divider"></div>
                 <li className={window.location.pathname === "/completed&future" ? "active" : ""}>
                     <Link to="/completedfuture">Completed and Future Projects</Link>
-                </li>
-                <div className="dropdown-divider"></div>
-                <li className={window.location.pathname === "/projectplan" ? "active" : ""}>
-                    <Link to="/projectplan">Project Plan</Link>
-                </li>
+                </li>                
             </div>
             <div id="patterns">
                 <h3>PATTERNS</h3>
